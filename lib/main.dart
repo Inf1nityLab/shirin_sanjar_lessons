@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shirin_sanjar_lessons/function.dart';
-import 'package:shirin_sanjar_lessons/if_screen.dart';
-import 'package:shirin_sanjar_lessons/lesson03.dart';
+import 'package:shirin_sanjar_lessons/lesson09/bottom_screen.dart';
+import 'package:shirin_sanjar_lessons/lesson09/lesson09.dart';
+import 'package:shirin_sanjar_lessons/lesson10/lesson10.dart';
+import 'package:shirin_sanjar_lessons/lesson10/page_screen.dart';
+import 'package:shirin_sanjar_lessons/lesson11/data_class.dart';
+
 import 'package:shirin_sanjar_lessons/to_do_app/to_do_screen.dart';
+
+import 'lesson10/flu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +21,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ToDoScreen(),
+      home: const Lesson11(),
     );
   }
 }
+
+
 
 

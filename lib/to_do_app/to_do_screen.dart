@@ -60,27 +60,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Обновить задачу'),
-                              content: TextField(
-                                controller: updateController,
-                                decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Обновить задачу'),
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text('Отмена'),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    update(index);
-                                  },
-                                  child: const Text('Обновить задачу'),
-                                ),
-                              ],
-                            );
+                            return alertDialog('Upadate data', 'Cancel', updateController, (){update(index);}) ;
                           },
                         );
                       }, icon: const Icon(Icons.edit)),
@@ -118,32 +98,32 @@ class _ToDoScreenState extends State<ToDoScreen> {
           showDialog(
             context: context,
             builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Добавить задачу'),
-                content: TextField(
-                  controller: addController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Добавить задачу'),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('Отмена'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      create();
-                    },
-                    child: const Text('Добавить задачу'),
-                  ),
-                ],
-              );
+              return alertDialog('Add data', 'Cancel', addController, (){create();});
             },
           );
         },
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  Widget alertDialog(String textOne, String textTwo, TextEditingController controller, Function() onTap){
+    return AlertDialog(
+      title:  Text('$textOne'),
+      content: TextField(
+        controller: controller,
+        decoration:  InputDecoration(
+            border: const OutlineInputBorder(),
+            labelText: textOne),
+      ),
+      actions: [
+        textButton(() =>  Navigator.pop(context), textTwo),
+        textButton(() => onTap, textOne)
+      ],
+    );
+  }
+
+  Widget textButton(Function() onTap, String text){
+    return TextButton(onPressed: onTap, child: Text(text));
   }
 }

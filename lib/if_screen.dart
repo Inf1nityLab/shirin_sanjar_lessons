@@ -41,7 +41,7 @@ class _IfScreenState extends State<IfScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           ElevatedButton(onPressed: (){press();}, child: const Text('press'))
+           ElevatedButton( onPressed: (){},child: const Text('press'))
           ],
         ),
       ),
